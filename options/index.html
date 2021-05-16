@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Assets/index.css" />
+    <title>Platzi Commerce</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h3>Platzi Commerce</h3>
+        <button class="cart">Carro ({{Cart.quantity}})</button>
+        <cart-content v-for="p in Cart.products" :product="p"></cart-content>
+      </header>
+      <product-manager></product-manager>
+    </div>
+    <!-- Import vue-->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- create vue app -->
+    <script src="./main.js"></script>
+    <!-- Components -->
+    <script src="./Assets/Components/product.js"></script>
+    <script src="./Assets/Components/cartContent.js"></script>
+    <script src="./Assets/Components/productManager.js"></script>
+    
+    <script>
+      app.mount("#app")
+    </script>
+
+
+  </body>
+</html>
