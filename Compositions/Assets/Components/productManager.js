@@ -48,40 +48,22 @@ function generateProducts(quantity) {
 }
 
 function getData() {
-    return generateProducts(10)
+    return generateProducts(5)
 }
 
-app.component("product-manager", {
-    
-    template: /* vue-html */ `
+
+app.component( "productManager", {
+    template: 
+    /* vue-html */`
     <main>
-        <app-product v-on:send-to-cart="handleSendToCart" v-for="p in products" :product="p" 
-        :key="p.id"></app-product>
+        <app-product v-for="p in products" :product="p" :key="p.id"></app-product>
     </main>
     `,
-    data() {
+    setup() {
+        
+        const products = ref(  getData() )
         return {
-            products: []
+            products
         }
-    },
-    emits: ["sendToCart"], 
-    methods: {
-        handleSendToCart(product) {
-            this.$emit("sendToCart", product)
-        }
-    },
-    created() {
-        new Promise((resolve, reject) => {
-            const data  = getData();
-            if(data) {
-                resolve(data)
-            }else {
-                reject(new Error("[ERROR] The getter of product data wasn´t succesful"))
-            }
-
-        }).then(data => {
-            this.products = data;
-        })
-        .catch(err=> console.error(err))
     }
 })

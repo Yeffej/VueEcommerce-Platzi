@@ -118,15 +118,23 @@ body {
     border: 1px solid #616161;
     border-radius: 4px;
   }
-  main .description button {
-    padding: 8px;
-    font-size: 18px;
+  main .description__CTA {
+    padding: .5em;
+    font-size: 1.22em;
+    font-weight: 600;
     background: rgb(104, 104, 209);
     color: #fefefe;
     border: none;
     border-radius: 8px;
+    letter-spacing: 5px;
+    outline: none;
+    transition: 200ms;
   }
-  main .description button:disabled {
+  main  .description__CTA:active {
+    transform: scale(0.8);
+  }
+
+  main .description__CTA:disabled {
     background: rgb(159, 159, 228);
   }
   .badge {
@@ -143,4 +151,11 @@ body {
   }
   .badge.offer {
     background-color: rgb(197, 107, 33);
+  }
+
+
+  @media screen and (max-width: 767px ) {
+    main .description__CTA {
+      font-size: .8em;
+    }
   }

@@ -32,6 +32,8 @@ app.component("app-product", {
             <span>Código de descuento:</span>
             <input type="text" placeholder="Ingresa tu código" />
           </div>
+          <button v-on:click="handleSendToCart(product)" class="description__CTA"
+          >Añadir Al Carrito</button>
         </section>
     </section>
     `,
@@ -50,6 +52,7 @@ app.component("app-product", {
             productActive: 0,
         }
     },
+    emits: ["sendToCart"], 
     methods: {
       handleThumbClick() {
         this.SourceImg[this.productActive].thumbClass = ""
@@ -59,9 +62,15 @@ app.component("app-product", {
           this.productActive = 0
         }
         this.SourceImg[this.productActive].thumbClass = "active"
+      },
+      handleSendToCart(product) {
+        const dataProduct = {
+          data: product,
+          img: this.SourceImg[this.productActive].thumbnail,
+          quantity: 1
+        }
+        this.$emit("sendToCart", dataProduct)
       }
+
     },
-    computed: {
-      
-    }
 })

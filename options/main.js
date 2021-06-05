@@ -1,21 +1,36 @@
 const app = Vue.createApp({
     data() {
         return {
-            product: {},
             Cart: {
                 quantity: 0,
                 products: [],
+                Visibility: false
             },
-            images: [{main: "./Assets/images/camera.jpg", thumbnail: "./Assets/images/camera-thumb.jpg"},
-            {main: "./Assets/images/camera-2.jpg", thumbnail: "./Assets/images/camera-2-thumb.jpg"}],
+            
         }
     },
 
     methods: {
+        handleSendToCart(product) {
+            const idxProduct = this.Cart.products.findIndex(p=> {
+              return p.data.id === product.data.id
+            })
 
+            if(idxProduct >= 0) {
+                this.Cart.products[idxProduct].quantity += 1
+            }else {
+                this.Cart.products.push(product)
+            }
+
+            this.Cart.quantity++;
+        },
+        ToggleCart() {
+            if(this.Cart.Visibility) {
+                this.Cart.Visibility = false
+                return;
+            }
+            this.Cart.Visibility = true
+        }
     },
-    computed: {
-
-    }
 })
 

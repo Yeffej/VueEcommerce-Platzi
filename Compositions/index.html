@@ -10,44 +10,22 @@
     <div id="app">
       <header>
         <h3>Platzi Commerce</h3>
-        <button class="cart">Carro (0)</button>
-        <div class="cart-content">
-          <div class="cart-content__product">
-            <img src="" alt="" />
-            <span>Producto - $ 100.00</span>
-          </div>
-        </div>
+        <button class="cart">Carro ({{Cart.quantity}})</button>
+        <cart-content v-for="p in Cart.products" :product="p"></cart-content>
       </header>
-      <main>
-        <section class="product">
-          <div class="product__thumbnails">
-            <div class="thumb"></div>
-          </div>
-          <div class="product__image">
-            <img src="" alt="" />
-          </div>
-        </section>
-        <section class="description">
-          <h4>Producto</h4>
-          <span class="badge new">Nuevo</span>
-          <span class="badge offer">Oferta</span>
-          <p class="description__status"></p>
-          <p class="desction__price">$ 100.00</p>
-          <p class="description__content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-            dicta quis repellendus facilis unde! In enim tempora culpa dolorum
-            recusandae ipsa rem. Reiciendis et ipsum officia eius corporis sequi
-            libero.
-          </p>
-          <div class="discount">
-            <span>Código de descuento:</span>
-            <input type="text" placeholder="Ingresa tu código" />
-          </div>
-        </section>
-      </main>
+      <product-manager></product-manager>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
+    <!-- create vue app -->
     <script src="./main.js"></script>
+    <!-- Components -->
+    <script src="./Assets/Components/product.js"></script>
+    <script src="./Assets/Components/cartContent.js"></script>
+    <script src="./Assets/Components/productManager.js"></script>
+
+    <script>
+      app.mount("#app")
+    </script>
   </body>
 </html>
